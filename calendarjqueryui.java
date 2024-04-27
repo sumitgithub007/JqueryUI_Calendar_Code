@@ -22,6 +22,7 @@ public class testnew {
 
 		driver.get("https://jqueryui.com/datepicker/");
 		driver.switchTo().frame(0);
+		boolean check =true;
 		
 		WebDriverWait w = new WebDriverWait(driver,Duration.ofSeconds(10));
 		driver.findElement(By.cssSelector("#datepicker")).click();
@@ -43,12 +44,15 @@ public class testnew {
 			}
 			else {
 				System.out.println("breaking loop check extered month year correct format");
+				check=false;
 				break;
 			}
 			 
 		 }
 			 
-					List<WebElement> ele =driver.findElements(By.cssSelector(".ui-state-default"));
+		 if(check)
+		 {
+				List<WebElement> ele =driver.findElements(By.cssSelector(".ui-state-default"));
 				for(WebElement e  :ele)
 				{
 					if(e.getText().equals("28"))
@@ -59,6 +63,8 @@ public class testnew {
 					}
 				}
 				
+		 }
+			
 		
 		
 		driver.switchTo().defaultContent();
